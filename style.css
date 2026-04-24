@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+} 
+
+.calculator-body {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.calculator-screen {
+    background-color: wheat;
+    width: 100vw;
+    height: 20vh;
+}
+
+.calculator-buttons {
+    display: flex;
+    background-color: rgb(25, 69, 90);
+    width: 100vw;
+    height: 80vh;
+}
