@@ -24,3 +24,7 @@
     width: 100vw;
     height: 80vh;
 }
+
+.left-side-buttons .right-side-buttons {
+    display: flex;
+}
