@@ -25,13 +25,23 @@
 
 .calculator-buttons {
     display: flex;
-    background-color: rgb(76, 93, 100);
+    background-color: rgb(86, 99, 105);
     margin: 10px;
     width: 800px;
     height: 680px;
 }
 
-.left-side-buttons {
+.left-side-buttons, .right-side-buttons {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+    width: 400px;
+    height: 680px;
+    padding: 20px;
+    gap: 10px;
+}
+
+.button {
+    flex: auto;
 }
