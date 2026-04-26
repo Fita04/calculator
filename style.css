@@ -10,7 +10,7 @@
 .calculator-body {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: #f0f0f0;
     width: 825px;
     height: 920px;
@@ -28,7 +28,7 @@
     background-color: rgb(86, 99, 105);
     margin: 10px;
     width: 800px;
-    height: 680px;
+    height: 600px;
 }
 
 .left-side-buttons, .right-side-buttons {
@@ -42,6 +42,18 @@
     gap: 10px;
 }
 
-.button {
+.left-side-buttons .button {
     flex: auto;
+    width: 100px;
+    height: 70px;
+}
+
+.right-side-buttons .button {
+    flex: auto;
+    width: 120px;
+    height: 70px;
+}
+
+.button {
+    font-size: large;
 }
