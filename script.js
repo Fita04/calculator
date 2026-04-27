@@ -8,6 +8,8 @@ const rightSideButtons = document.querySelector(".right-side-buttons");
 const rightButtonsWidth = rightSideButtons.style.height = "800px";
 const rightButtonsHeight = rightSideButtons.style.height = "680px";
 
+let userInput = ""; 
+
 const buttonLabelsLeft = [
     "7", "8", "9",
     "4", "5", "6",
@@ -20,18 +22,52 @@ buttonLabelsLeft.forEach(label => {
     button.className = "button";
     button.textContent = label;
     leftSideButtons.appendChild(button);
+    button.addEventListener("click", function () {
+    userInput += `${label}`
+    })
 }); 
 
-const buttonLabelsRight = [
+const buttonLabelsTopRight = [
     "Del", "CE",
-    "X", "/",
+];
+
+const buttonLabelsBottomRight = [
+    "*", "/",
     "+", "-",
     "=",
 ];
 
-buttonLabelsRight.forEach(label => {
+buttonLabelsTopRight.forEach(label => {
    let button = document.createElement("button");
     button.className = "button";
     button.textContent = label;
     rightSideButtons.appendChild(button);
+});
+
+buttonLabelsBottomRight.forEach(label => {
+   let button = document.createElement("button");
+    button.className = "button";
+    button.textContent = label;
+    rightSideButtons.appendChild(button);
+    button.addEventListener("click", function () {
+    userInput += ` ${label} `
+    })
 }); 
+
+
+
+function add () {
+    
+};
+
+function subtract () {
+
+};
+
+function multiply () {
+    
+};
+
+function divide () {
+
+};
