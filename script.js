@@ -78,20 +78,20 @@ operateButton.addEventListener("click", () =>
         display.textContent = result);
 
 function add (a, b) {
-  return parseInt(a) + parseInt(b);
+  return parseFloat(a) + parseFloat(b);
 
 };
 
 function subtract (a, b) {
-    return parseInt(a) - parseInt(b);
+    return parseFloat(a) - parseFloat(b);
 };
 
 function multiply (a, b) {
-    return parseInt(a) * parseInt(b);
+    return parseFloat(a) * parseFloat(b);
 };
 
 function divide (a, b) {
-     return parseInt(a) / parseInt(b);
+     return parseFloat(a) / parseFloat(b);
 };
 
 function operate () {
