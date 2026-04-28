@@ -17,7 +17,11 @@
 }
 
 .calculator-screen {
+    display: flex;
     background-color: white;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
     margin: 10px;
     width: 800px;
     height: 200px;
@@ -56,4 +60,11 @@
 
 .button {
     font-size: large;
+}
+
+.input {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 0px;
+    font-size: 80px;
 }

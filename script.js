@@ -5,6 +5,7 @@ let result;
 
 const calculatorScreen = document.querySelector(".calculator-screen");
 const display = document.createElement("p");
+display.className = "input";
 calculatorScreen.appendChild(display);
 
 const leftSideButtons = document.querySelector(".left-side-buttons");
