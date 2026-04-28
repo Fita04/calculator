@@ -3,8 +3,6 @@ let operandInput = "";
 let secondInput = "";
 let result; 
 
-let userInput = [firstInput, operandInput, secondInput];
-
 const calculatorScreen = document.querySelector(".calculator-screen");
 const display = document.createElement("p");
 calculatorScreen.appendChild(display);
@@ -46,6 +44,10 @@ clearButton.textContent = "CE";
 clearButton.className = "button";
 rightSideButtons.appendChild(clearButton);
 
+clearButton.addEventListener("click", clear);
+clearButton.addEventListener("click", () =>
+    display.textContent = `${firstInput} ${operandInput} ${secondInput}`);
+
 const buttonLabelsBottomRight = [
     "*", "/",
     "+", "-",
@@ -76,7 +78,8 @@ operateButton.addEventListener("click", () =>
         display.textContent = result);
 
 function add (a, b) {
-    return parseInt(a) + parseInt(b);
+  return parseInt(a) + parseInt(b);
+
 };
 
 function subtract (a, b) {
@@ -129,4 +132,11 @@ function operateWhenClickingAnotherOperator() {
         firstInput = result;
         display.textContent = `${result} ${operandInput}`;
     }
+}
+
+function clear() {
+    firstInput = "";
+    operandInput = "";
+    secondInput = "";
+    result = "";
 }
