@@ -5,6 +5,9 @@ const rightSideButtons = document.querySelector(".right-side-buttons");
 let firstInput = "";
 let operandInput = "";
 let secondInput = "";
+let result; 
+
+let userInput = [firstInput, operandInput, secondInput];
 
 
 const buttonLabelsLeft = [
@@ -43,7 +46,6 @@ buttonLabelsTopRight.forEach(label => {
 const buttonLabelsBottomRight = [
     "*", "/",
     "+", "-",
-    "=",
 ];
 
 buttonLabelsBottomRight.forEach(label => {
@@ -51,39 +53,60 @@ buttonLabelsBottomRight.forEach(label => {
     button.className = "button";
     button.textContent = label;
     rightSideButtons.appendChild(button);
-    button.addEventListener("click", () => operandInput = label);
-
+    button.addEventListener("click", () => 
+        operandInput = label);
 }); 
 
-function add (firstInput, secondInput) {
-    return parseInt(firstInput) + parseInt(secondInput);
+const operateButton = document.createElement("button");
+operateButton.textContent = "=";
+operateButton.className = "button";
+rightSideButtons.appendChild(operateButton);
+operateButton.addEventListener("click", operate);
+
+function add (a, b) {
+    return parseInt(a) + parseInt(b);
 };
 
-function subtract (firstInput, secondInput) {
-    return parseInt(firstInput) - parseInt(secondInput);
+function subtract (a, b) {
+    return parseInt(a) - parseInt(b);
 };
 
-function multiply (firstInput, secondInput) {
-    return parseInt(firstInput) * parseInt(secondInput);
+function multiply (a, b) {
+    return parseInt(a) * parseInt(b);
 };
 
-function divide (firstInput, secondInput) {
-     return parseInt(firstInput) / parseInt(secondInput);
+function divide (a, b) {
+     return parseInt(a) / parseInt(b);
 };
 
-function operate (operandInput) {
-    switch (operandInput) {
-        case "+": add();
-            
-            break;
+function operate () {
+  if (operandInput == "+" && firstInput !== "" && secondInput !== "") { 
+    result = add(firstInput, secondInput);
+    firstInput = "";
+    operandInput = "";
+    secondInput = "";
+    return result;
     
-        case "-": subtract();
-            break;
+  } else if (operandInput == "-" && firstInput !== "" && secondInput !== "") { 
+    result = subtract(firstInput, secondInput);
+    firstInput = "";
+    operandInput = "";
+    secondInput = "";
+    return result;
+    
+  } else if (operandInput == "*" && firstInput !== "" && secondInput !== "") { 
+    result = multiply(firstInput, secondInput);
+    firstInput = "";
+    operandInput = "";
+    secondInput = "";
+    return result;
 
-        case "*": multiply();
-            break;
+  } else if (operandInput == "/" && firstInput !== "" && secondInput !== "") { 
+    result = divide (firstInput, secondInput);
+    firstInput = "";
+    operandInput = "";
+    secondInput = "";
+    return result;
 
-        case "/": divide();
-            break;
-    }
+  };
 };
