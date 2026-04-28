@@ -27,11 +27,11 @@ buttonLabelsLeft.forEach(label => {
     button.addEventListener ("click", () => {
         if (operandInput == "") { 
             firstInput += `${label}`;
-            display.textContent += label;
+            display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
 
         } else if (firstInput !== "" && operandInput !== "") { 
             secondInput += `${label}`;
-            display.textContent += label;
+            display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
         };
     });
 });
@@ -56,11 +56,15 @@ buttonLabelsBottomRight.forEach(label => {
     button.className = "button";
     button.textContent = label;
     rightSideButtons.appendChild(button);
-    button.addEventListener("click", () => 
-        operandInput = label);
-    button.addEventListener("click", () =>
-        display.textContent += operandInput);
     button.addEventListener("click", operateWhenClickingAnotherOperator);
+    button.addEventListener("click", () => 
+        {if (firstInput == "") { return;
+            
+        } else {operandInput = label};
+    });
+
+    button.addEventListener("click", () =>
+        display.textContent = `${firstInput} ${operandInput} ${secondInput}`);
 }); 
 
 const operateButton = document.createElement("button");
@@ -122,6 +126,7 @@ function operate () {
 function operateWhenClickingAnotherOperator() {
     if (operandInput !== "" && firstInput !== "" && secondInput !== "") {
         operate();
-        display.textContent = result;
+        firstInput = result;
+        display.textContent = `${result} ${operandInput}`;
     }
 }
