@@ -96,7 +96,13 @@ function divide (a, b) {
 };
 
 function operate () {
-  if (operandInput == "+" && firstInput !== "" && secondInput !== "") { 
+  if (operandInput == "/" && firstInput !== "" && secondInput === "0") { 
+    result = "You thought you did something huh?";
+    firstInput = "";
+    operandInput = "";
+    secondInput = "";
+    return result;
+  } else if (operandInput == "+" && firstInput !== "" && secondInput !== "") { 
     result = add(firstInput, secondInput);
     firstInput = "";
     operandInput = "";
@@ -124,7 +130,7 @@ function operate () {
     secondInput = "";
     return result;
 
-  };
+  } 
 };
 
 function operateWhenClickingAnotherOperator() {
