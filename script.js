@@ -2,6 +2,7 @@ let firstInput = "";
 let operandInput = "";
 let secondInput = "";
 let result; 
+let displayedText = [];
 
 const calculatorScreen = document.querySelector(".calculator-screen");
 const display = document.createElement("p");
@@ -94,7 +95,7 @@ operateButton.className = "button";
 rightSideButtons.appendChild(operateButton);
 operateButton.addEventListener("click", operate);
 operateButton.addEventListener("click", () =>
-        display.textContent = result.toFixed(5));
+        display.textContent = parseFloat(result.toFixed(5)));
 
 function add (a, b) {
   return parseFloat(a) + parseFloat(b);
