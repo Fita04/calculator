@@ -45,12 +45,12 @@ leftSideButtons.appendChild(dotButton);
 
 
 dotButton.addEventListener ("click", () => {
-        if (firstInput.split("").includes(".") == false && secondInput == "" && operandInput == "") { 
+        if (firstInput.split("").includes(".") == false && firstInput !== "" && secondInput == "" && operandInput == "") { 
             firstInput += ".";
             recentlyUpdated = "firstInput";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
 
-        } else if (secondInput.split("").includes(".") == false && operandInput !== "") { 
+        } else if (secondInput.split("").includes(".") == false && secondInput !== "" && operandInput !== "") { 
             secondInput += ".";
             recentlyUpdated = "secondInput";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
@@ -68,7 +68,7 @@ deleteButton.addEventListener("click", deleteCharacter,
     () => display.textContent = `${firstInput} ${operandInput} ${secondInput}`);
 
 const clearButton = document.createElement("button");
-clearButton.textContent = "CE";
+clearButton.textContent = "AC";
 clearButton.className = "button";
 rightSideButtons.appendChild(clearButton);
 
