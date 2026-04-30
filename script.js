@@ -42,11 +42,11 @@ leftSideButtons.appendChild(dotButton);
 
 
 dotButton.addEventListener ("click", () => {
-        if (firstInput.split("").includes(".") == false && secondInput == "") { 
+        if (firstInput.split("").includes(".") == false && secondInput == "" && operandInput == "") { 
             firstInput += ".";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
 
-        } else if (secondInput.split("").includes(".") == false) { 
+        } else if (secondInput.split("").includes(".") == false && operandInput !== "") { 
             secondInput += ".";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
 
@@ -94,7 +94,7 @@ operateButton.className = "button";
 rightSideButtons.appendChild(operateButton);
 operateButton.addEventListener("click", operate);
 operateButton.addEventListener("click", () =>
-        display.textContent = result);
+        display.textContent = result.toFixed(5));
 
 function add (a, b) {
   return parseFloat(a) + parseFloat(b);
