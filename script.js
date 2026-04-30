@@ -2,7 +2,7 @@ let firstInput = "";
 let operandInput = "";
 let secondInput = "";
 let result; 
-let displayedText = [];
+let recentlyUpdated = "";
 
 const calculatorScreen = document.querySelector(".calculator-screen");
 const display = document.createElement("p");
@@ -27,10 +27,12 @@ buttonLabelsLeft.forEach(label => {
     button.addEventListener ("click", () => {
         if (operandInput == "") { 
             firstInput += `${label}`;
+            recentlyUpdated = "firstInput";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
 
         } else if (firstInput !== "" && operandInput !== "") { 
             secondInput += `${label}`;
+            recentlyUpdated = "secondInput";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
         };
     });
@@ -45,11 +47,14 @@ leftSideButtons.appendChild(dotButton);
 dotButton.addEventListener ("click", () => {
         if (firstInput.split("").includes(".") == false && secondInput == "" && operandInput == "") { 
             firstInput += ".";
+            recentlyUpdated = "firstInput";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
 
         } else if (secondInput.split("").includes(".") == false && operandInput !== "") { 
             secondInput += ".";
+            recentlyUpdated = "secondInput";
             display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
+            
 
     }
     });
@@ -58,6 +63,9 @@ const deleteButton = document.createElement("button");
 deleteButton.textContent = "Del";
 deleteButton.className = "button";
 rightSideButtons.appendChild(deleteButton);
+
+deleteButton.addEventListener("click", deleteCharacter, 
+    () => display.textContent = `${firstInput} ${operandInput} ${secondInput}`);
 
 const clearButton = document.createElement("button");
 clearButton.textContent = "CE";
@@ -82,7 +90,10 @@ buttonLabelsBottomRight.forEach(label => {
     button.addEventListener("click", () => 
         {if (firstInput == "") { return;
             
-        } else {operandInput = label};
+        } else {
+        operandInput = label;
+        recentlyUpdated = "operandInput";
+        };
     });
 
     button.addEventListener("click", () =>
@@ -120,12 +131,14 @@ function operate () {
     firstInput = "";
     operandInput = "";
     secondInput = "";
+    recentlyUpdated = "";
     return result;
   } else if (operandInput == "+" && firstInput !== "" && secondInput !== "") { 
     result = add(firstInput, secondInput);
     firstInput = "";
     operandInput = "";
     secondInput = "";
+    recentlyUpdated = "";
     return result;
     
   } else if (operandInput == "-" && firstInput !== "" && secondInput !== "") { 
@@ -133,6 +146,7 @@ function operate () {
     firstInput = "";
     operandInput = "";
     secondInput = "";
+    recentlyUpdated = "";
     return result;
     
   } else if (operandInput == "*" && firstInput !== "" && secondInput !== "") { 
@@ -140,6 +154,7 @@ function operate () {
     firstInput = "";
     operandInput = "";
     secondInput = "";
+    recentlyUpdated = "";
     return result;
 
   } else if (operandInput == "/" && firstInput !== "" && secondInput !== "") { 
@@ -147,6 +162,7 @@ function operate () {
     firstInput = "";
     operandInput = "";
     secondInput = "";
+    recentlyUpdated = "";
     return result;
 
   } 
@@ -165,4 +181,27 @@ function clear() {
     operandInput = "";
     secondInput = "";
     result = "";
+    recentlyUpdated = "";
+}
+
+function deleteCharacter () {
+    if (recentlyUpdated === "firstInput") { 
+        firstInput = firstInput.split("").slice(0, -1).join("");
+        display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
+        
+        
+    } else if (recentlyUpdated === "operandInput") {
+        operandInput = operandInput.split("").slice(0, -1).join("");
+        display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
+        if (operandInput === "") { 
+            recentlyUpdated = "firstInput";
+        }
+
+    } else if (recentlyUpdated === "secondInput") {
+       secondInput = secondInput.split("").slice(0, -1).join("");
+        display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
+        if (secondInput === "") { 
+            recentlyUpdated = "operandInput";
+        }
+    }
 }
