@@ -15,7 +15,7 @@ const buttonLabelsLeft = [
     "7", "8", "9",
     "4", "5", "6",
     "1", "2", "3",
-    "0", ".", 
+    "0"
 ];
 
 buttonLabelsLeft.forEach(label => {
@@ -34,6 +34,24 @@ buttonLabelsLeft.forEach(label => {
         };
     });
 });
+
+const dotButton = document.createElement("button");
+dotButton.textContent = ".";
+dotButton.className = "button";
+leftSideButtons.appendChild(dotButton);
+
+
+dotButton.addEventListener ("click", () => {
+        if (firstInput.split("").includes(".") == false && secondInput == "") { 
+            firstInput += ".";
+            display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
+
+        } else if (secondInput.split("").includes(".") == false) { 
+            secondInput += ".";
+            display.textContent = `${firstInput} ${operandInput} ${secondInput}`;
+
+    }
+    });
 
 const deleteButton = document.createElement("button");
 deleteButton.textContent = "Del";
