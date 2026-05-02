@@ -108,9 +108,15 @@ operateButton.addEventListener("click", operate);
 operateButton.addEventListener("click", () =>
        {if (result == "You thought you did something huh?") {
             display.textContent = result;
+            firstInput = "";
+            operandInput = "";
+            secondInput = "";
+            result = "";
+            recentlyUpdated = "";;
        } else { display.textContent = parseFloat(result.toFixed(5));
         
        }});
+
 function add (a, b) {
   return parseFloat(a) + parseFloat(b);
 
@@ -129,6 +135,11 @@ function divide (a, b) {
 };
 
 function operate () {
+       if (result == "You thought you did something huh?") {
+            display.textContent = result;
+            clear();
+        }  
+
   if (operandInput == "/" && firstInput !== "" && secondInput === "0") { 
     result = "You thought you did something huh?";
     firstInput = "";
