@@ -106,8 +106,11 @@ operateButton.className = "button";
 rightSideButtons.appendChild(operateButton);
 operateButton.addEventListener("click", operate);
 operateButton.addEventListener("click", () =>
-        display.textContent = parseFloat(result.toFixed(5)));
-
+       {if (result == "You thought you did something huh?") {
+            display.textContent = result;
+       } else { display.textContent = parseFloat(result.toFixed(5));
+        
+       }});
 function add (a, b) {
   return parseFloat(a) + parseFloat(b);
 
